@@ -22,7 +22,13 @@ export default function Routes({navigation}) {
         <Root.Screen name="Splash" component={Splash} />
         <Root.Screen name="SignUp" component={SignUp} />
         <Root.Screen name="SignIn" component={SignIn} />
-        <Root.Screen name="Homepage" component={Homepage} />
+        <Root.Screen name="Homepage" component={Homepage} 
+        options={{
+          headerShown: true,
+          headerBackVisible: false,
+          // headerTintColor: 'red',
+        }}
+        />
       </Root.Navigator>
     </NavigationContainer>
   );

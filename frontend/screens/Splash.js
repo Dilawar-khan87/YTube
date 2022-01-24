@@ -45,7 +45,7 @@ export default function Splash({navigation}) {
           // backgroundColor:'pink'
         }}>
         <Button
-          color="red"
+          // color="red"
           title="Sign In"
           onPress={() => {
             navigation.navigate('SignIn');
@@ -59,7 +59,7 @@ export default function Splash({navigation}) {
           marginTop: '5%',
         }}>
         <Button
-          color="red"
+          // color="red"
           title="Sign Up"
           onPress={() => {
             navigation.navigate('SignUp');
@@ -81,7 +81,7 @@ export default function Splash({navigation}) {
           marginTop: '5%',
         }}>
         <Button
-          color="green"
+          // color="green"
           title="Refresh"
           onPress={() => {
             getUser();
@@ -97,7 +97,7 @@ export default function Splash({navigation}) {
               margin: 10,
               padding: 10,
               borderRadius: 10,
-              backgroundColor: 'pink',
+              backgroundColor: 'lightblue',
               width: '94%',
               alignSelf: 'center',
             }}>

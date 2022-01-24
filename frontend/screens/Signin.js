@@ -6,19 +6,31 @@ export default function Signin({navigation}) {
   const [password, setPassword] = React.useState('');
 
   function handleSubmit() {
-    const formData = new FormData();
-    formData.append('email', email);
-    formData.append('password', password);
     fetch('http:192.168.18.191:5000/users/login', {
       method: 'POST',
-      body: formData,
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        email: email,
+        password: password,
+      }),
     })
       .then(Response => {
-        console.log(Response);
+        Response.json().then(data => {
+          console.log(data.token);
+          if(data.token){
+            navigation.navigate('Homepage');
+          }else{
+            alert("Invalid Credentials");
+          }
+        });
       })
       .catch(error => {
         console.log(error);
       });
+    // console.log(email, password);
   }
   return (
     <View
@@ -51,7 +63,7 @@ export default function Signin({navigation}) {
 
       <Button
         title="Sign In"
-        color='red'
+        // color='red'
         onPress={() => {
           handleSubmit();
           // navigation.navigate('Homepage');
@@ -65,7 +77,7 @@ export default function Signin({navigation}) {
           style={{
             fontSize: 16,
             textAlign: 'center',
-            color: 'red',
+            // color: 'red',
             marginTop: 10,
           }}>
           Don't have an account? Sign Up

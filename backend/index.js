@@ -54,18 +54,31 @@ const users = [
 app.get("/users", (req, res) => {
   res.send(users);
 });
+function authenticate(user) {
+  console.log("authenticate", user);
+  const tokenData = jwt.sign(
+    {
+      exp: Math.floor(Date.now() / 1000) + 60 * 60 * 24,
+      data: {
+        userId: user.id,
+        name: user.name,
+        email: user.email,
+        password: user.password,
+        age: user.age,
+      },
+    },
+    "secret"
+  );
+  user.token = tokenData;
+}
 
 app.post("/users/login", (req, res) => {
   const { email, password } = req.body;
-  const user = users.find(
-    (user) => user.email === email && user.password === password
-  );
-  if (!user) {
-    res.send(404, "User not found");
-  } else {
-    authenticate(user);
-    res.send(user);
-  }
+  const user = users.find((user) => user.email === email && user.password === password);
+
+  authenticate(user);
+  res.json(user);
+
 });
 
 app.get("/users/profile", (req, res) => {
@@ -82,22 +95,7 @@ app.get("/users/profile", (req, res) => {
     res.send(403, "Forbidden");
   }
 });
-function authenticate(user) {
-  const tokenData = jwt.sign(
-    {
-      exp: Math.floor(Date.now() / 1000) + 60 * 60 * 24,
-      data: {
-        userId: user.id,
-        name: user.name,
-        email: user.email,
-        password: user.password,
-        age: user.age,
-      },
-    },
-    "secret"
-  );
-  user.token = tokenData;
-}
+
 
 app.post("/users", (req, res) => {
   const user = req.body;
@@ -160,8 +158,9 @@ app.post("/videos", (req, res) => {
     if (!user) {
       res.send(404, "User not found");
     }
-    const { title, description, views, likes, dislikes, published, video_url } =
+    const { title, description, published, video_url } =
       req.body;
+      const { views, likes, dislikes} = 0;
     const video = {
       id: videos.length + 1,
       user_id: user.id,

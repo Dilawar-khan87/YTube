@@ -83,7 +83,7 @@ export default function Signup({navigation}) {
         value={age}
       />
       <Button
-        color='red'
+        // color='red'
         title="Sign Up"
         onPress={() => {
           handleSubmit();
@@ -98,7 +98,7 @@ export default function Signup({navigation}) {
           style={{
             fontSize: 16,
             textAlign: 'center',
-            color: 'red',
+            // color: 'red',
             marginTop: 10,
           }}>
           already have an account? Sign In

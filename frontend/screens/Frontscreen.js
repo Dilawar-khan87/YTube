@@ -63,9 +63,9 @@ export default function Frontscreen({navigation}) {
           margin: 10,
           padding: 10,
           borderRadius: 10,
-          backgroundColor: '#ff5967',
+          backgroundColor: 'lightblue',
           width: '94%',
-          height: '28%',
+          height: '16%',
           alignSelf: 'center',
 
 
@@ -80,14 +80,11 @@ export default function Frontscreen({navigation}) {
           video={{ uri: video.video_url }}
           showDuration={true}
         />
-        <Text>{video.description}</Text>
-        <Text>{video.title}</Text>
-        <Text>{video.video_url}</Text>
-        <Text>{video.views}</Text>
-        <Text>{video.likes}</Text>
-        <Text>{video.dislikes}</Text>
-        <Text>{video.user_uid}</Text>
-        <Text>{video.published}</Text>
+        <Text style={{fontSize:16,fontWeight:'600'}}>Title:{video.title}</Text>        
+        <Text style={{fontSize:16,fontWeight:'600'}}>Description:{video.description}</Text>
+        <Text style={{fontSize:16,fontWeight:'600'}}>Views:{video.views}</Text>
+        <Text style={{fontSize:16,fontWeight:'600'}}>Likes:{video.likes}</Text>
+        <Text style={{fontSize:16,fontWeight:'600'}}>Dislikes:{video.dislikes}</Text>
         
         </Card>
       ))
